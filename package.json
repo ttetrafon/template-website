@@ -19,9 +19,9 @@
     "lodash": "^4.18.1"
   },
   "scripts": {
-    "dev": "pnpm run typecheck && pnpm run build && pnpm run preview",
-    "typecheck": "pnpm tsc",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "pnpm run build && vite preview"
   }
 }
