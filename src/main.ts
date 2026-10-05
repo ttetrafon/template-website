@@ -8,7 +8,7 @@ import { State } from '../library/services/state';
 import { Logger } from '../library/services/logger';
 
 const logger: Logger = Logger.getInstance();
-logger.setLevel('error');
-logger.info("Test?!?!?");
+logger.setLevel('info');
+logger.info("Test?!?!?", { a: 1, b: 2 });
 
 const state: State = State.getInstance(AppName);
