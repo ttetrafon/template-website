@@ -1,6 +1,6 @@
 import { AppName } from './util/constants';
 // components
-import '../library/components/---';
+import '../library/components/---/script';
 // styles
 import './styles/style.css';
 // services
