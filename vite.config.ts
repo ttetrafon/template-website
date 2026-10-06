@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
@@ -15,6 +16,11 @@ export default defineConfig({
         main: './index.html',
         contact: './contact.html'
       }
+    }
+  },
+  resolve: {
+    alias: {
+      'lib': resolve(__dirname, './library')
     }
   }
 });
