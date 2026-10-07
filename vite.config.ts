@@ -20,7 +20,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'lib': resolve(__dirname, './library')
+      'lib': resolve(import.meta.dirname, './library')
     }
   }
 });
