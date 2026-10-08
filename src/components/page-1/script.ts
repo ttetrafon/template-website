@@ -7,7 +7,7 @@ import templateHtml from './doc.html?raw';
 import { AppName } from "../../util/constants";
 
 export type TestObservable = {
-  value: number;
+  counter: number;
 }
 
 const template: HTMLTemplateElement = document.createElement('template');
@@ -33,7 +33,7 @@ class Component extends HTMLElement {
   private translations: Record<string, Translations> = {};
 
   private btn: HTMLButtonElement | null = null;
-  private testObservable: TestObservable = { value: 0 }
+  private testObservable: TestObservable = { counter: 0 }
 
   constructor() {
     // Note that the DOM cannot be affected within the constructor and instead such manipulations must be deferred to the lifecycle methods.
@@ -92,12 +92,12 @@ class Component extends HTMLElement {
 
     this.btn = this.#shadow.querySelector("button");
     this.btn?.addEventListener("click", () => {
-      this.testObservable.value += 1;
+      this.testObservable.counter += 1;
       this.l.debug("... testObservable:", this.testObservable);
       if (this.btn) {
-        this.btn.innerText = `Value: ${this.testObservable.value}`;
+        this.btn.innerText = `Value: ${this.testObservable.counter}`;
       }
-      this.s.updateObservable("test-obs", "value", this.testObservable.value);
+      this.s.updateObservable("test-obs", this.testObservable);
     });
 
     // Note that custom elements cannot access custom properties or custom methods of another custom element from `connectedCallback` if the second element appears later in the DOM.
