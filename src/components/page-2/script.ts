@@ -31,7 +31,6 @@ class Component extends HTMLElement {
   private translations: Record<string, Translations> = {};
 
   private observableHolder: HTMLParagraphElement | null = null;
-  private observableCallback: Listener;
 
   constructor() {
     // Note that the DOM cannot be affected within the constructor and instead such manipulations must be deferred to the lifecycle methods.
@@ -47,8 +46,6 @@ class Component extends HTMLElement {
     this.l = Logger.getInstance();
     this.t = Translator.getInstance();
     this.s = State.getInstance(AppName);
-
-    this.observableCallback = this.observableSubscriber.bind(this);
   }
 
   // Attributes need to be observed to be tied to the lifecycle change callback.
@@ -90,7 +87,7 @@ class Component extends HTMLElement {
 
     this.observableHolder = this.#shadow.getElementById("obs-holder") as HTMLParagraphElement;
     this.getObservableValue();
-    this.s.subscribeToObservable("test-obs", "page-2", this.observableCallback);
+    this.s.subscribeToObservable("test-obs", "page-2", { "test-obs": this.observableSubscriber.bind(this) });
 
     // Note that custom elements cannot access custom properties or custom methods of another custom element from `connectedCallback` if the second element appears later in the DOM.
     // This can be overcome by using `window.customElements.whenDefined('element-name').then(() => { ... })`.
@@ -103,7 +100,7 @@ class Component extends HTMLElement {
     // Note that when destroying a component, it is good to also release any listeners.
 
     if (this.i18n && this.t) this.t.unregisterElementsForTranslations(this.i18n, this.textElements);
-    this.s.unsubscribeFromObservable("test-obs", "page-2", this.observableCallback);
+    this.s.unsubscribeFromObservable("test-obs", "page-2");
   }
   adoptedCallback() {
     // Triggered when the element is adopted through `document.adoptElement()` (like when using an <iframe/>).
@@ -116,8 +113,8 @@ class Component extends HTMLElement {
     if (value !== null) this.updateObservableValue(value);
   }
 
-  observableSubscriber(subscriber: string, property: string, newValue: unknown) {
-    this.l.debug(`---> Page-2.observableSubscriber(${subscriber}, ${property}, ${JSON.stringify(newValue)})`);
+  observableSubscriber(subscriber: string, watchedPath: string, newValue: unknown) {
+    this.l.debug(`---> Page-2.observableSubscriber(${subscriber}, ${watchedPath}, ${JSON.stringify(newValue)})`);
     const v = newValue as { counter: number };
     if (v === null || v === undefined) return;
 
