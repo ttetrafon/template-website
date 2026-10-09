@@ -90,7 +90,7 @@ class Component extends HTMLElement {
       this.textElements[t] = el;
     });
 
-    this.s.createObservable("test-obs", this.testObservable);
+    this.s.createObservable("test-obs", this.testObservable, { broadcastCreation: true, localStorage: true });
 
     this.btn = this.#shadow.querySelector("button");
     this.btn?.addEventListener("click", () => {
