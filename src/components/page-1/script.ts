@@ -3,6 +3,7 @@ import { Translations, Translator } from "lib/services/translator";
 import { State } from "lib/services/state";
 import resetStyles from 'lib/styles/reset.css?inline';
 import componentStyles from './styles.css?inline';
+import pageStyles from '../../styles/style.css?inline';
 import templateHtml from './doc.html?raw';
 import { AppName } from "../../util/constants";
 
@@ -16,6 +17,7 @@ const componentName: string = "page-1";
 template.innerHTML = /*html*/`
 <style>
   ${resetStyles}
+  ${pageStyles}
   ${componentStyles}
 </style>
 

@@ -22,5 +22,12 @@ export default defineConfig({
     alias: {
       'lib': resolve(import.meta.dirname, './library')
     }
+  },
+  // Ensure CSS is handled properly for web components
+  css: {
+    // Disable CSS modules for web components to prevent scoping issues
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+    }
   }
 });

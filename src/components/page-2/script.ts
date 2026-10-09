@@ -2,11 +2,10 @@ import { Logger } from "lib/services/logger";
 import { Translations, Translator } from "lib/services/translator";
 import { State } from "lib/services/state";
 import resetStyles from 'lib/styles/reset.css?inline';
+import pageStyles from '../../styles/style.css?inline';
 import componentStyles from './styles.css?inline';
 import templateHtml from './doc.html?raw';
 import { AppName } from "../../util/constants";
-import { type TestObservable } from "../page-1/script";
-import { Listener } from "lib/types";
 
 const template: HTMLTemplateElement = document.createElement('template');
 const componentName: string = "page-2";
@@ -14,6 +13,7 @@ const componentName: string = "page-2";
 template.innerHTML = /*html*/`
 <style>
   ${resetStyles}
+  ${pageStyles}
   ${componentStyles}
 </style>
 
