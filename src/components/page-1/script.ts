@@ -1,6 +1,6 @@
-import { Logger } from "lib/services/logger";
-import { Translations, Translator } from "lib/services/translator";
-import { State } from "lib/services/state";
+import { Logger } from "lib/lib/services/logger";
+import { State } from "lib/lib-fe/services/state";
+import { Translations, Translator } from "lib/lib-fe/services/translator";
 import resetStyles from 'lib/styles/reset.css?inline';
 import componentStyles from './styles.css?inline';
 import pageStyles from '../../styles/style.css?inline';

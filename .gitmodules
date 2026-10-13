@@ -1,3 +1,6 @@
-[submodule "library"]
-	path = library
+[submodule "library/lib"]
+	path = library/lib
 	url = git@github.com:ttetrafon/typescript-lib.git
+[submodule "library/lib-fe"]
+	path = library/lib-fe
+	url = git@github.com:ttetrafon/typescript-lib-frontend.git

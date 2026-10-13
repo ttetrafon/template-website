@@ -5,13 +5,13 @@ import { AppName } from './util/constants';
 import { domainRoot } from './data/config';
 import { aliases, routes } from './data/routes';
 // components
-import '../library/components/---/script';
+import 'lib/lib-fe/components/---/script';
 import './components/page-1/script';
 import './components/page-2/script';
 // services
-import { Logger } from '../library/services/logger';
-import { Navigator } from 'lib/services/navigator';
-import { State } from '../library/services/state';
+import { Logger } from 'lib/lib/services/logger';
+import { Navigator } from 'lib/lib-fe/services/navigator';
+import { State } from 'lib/lib-fe/services/state';
 
 const logger: Logger = Logger.getInstance();
 logger.setLevel('debug');
