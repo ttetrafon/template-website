@@ -20,7 +20,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'lib': resolve(import.meta.dirname, './library')
+      'library': resolve(import.meta.dirname, './library')
     }
   },
   // Ensure CSS is handled properly for web components
