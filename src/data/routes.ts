@@ -1,4 +1,4 @@
-import { Route } from "library/lib/types";
+import { Route } from "library/lib-fe/types";
 
 export const routes: Record<string, Route> = {
   'page-one': {

@@ -16,8 +16,6 @@ import { State } from 'library/lib-fe/services/state';
 const logger: Logger = Logger.getInstance();
 logger.setLevel('debug');
 
-document.body.classList.add('app-loading');
-
 State.getInstance(AppName);
 Navigator.getInstance(domainRoot, '#app', routes, aliases);
 

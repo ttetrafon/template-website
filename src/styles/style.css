@@ -41,7 +41,3 @@ body {
     color: var(--colour-background);
   }
 }
-
-button {
-  background-color: var(--colour-action);
-}
