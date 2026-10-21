@@ -6,6 +6,8 @@ import componentStyles from './styles.css?inline';
 import pageStyles from '../../styles/style.css?inline';
 import templateHtml from './doc.html?raw';
 import { AppName } from "../../util/constants";
+import { OBSERVABLE_WINDOW_SIZE } from "library/lib-fe/data/constants";
+import { WindowSize } from "library/lib-fe/types";
 
 export type TestObservable = {
   counter: number;
@@ -79,8 +81,6 @@ class Component extends HTMLElement {
     }
   }
   connectedCallback() {
-    // Triggered when the component is added to the DOM. Note that this is not triggered when the element is created.
-    // Can be triggered multiple times, especially if the component is moved around.
     if (this.initialised) return;
 
     Object.keys(this.translations).forEach((t: string) => {
@@ -102,21 +102,30 @@ class Component extends HTMLElement {
       this.s.updateObservable("test-obs", this.testObservable);
     });
 
-    // Note that custom elements cannot access custom properties or custom methods of another custom element from `connectedCallback` if the second element appears later in the DOM.
-    // This can be overcome by using `window.customElements.whenDefined('element-name').then(() => { ... })`.
+    this.s.subscribeToObservable(OBSERVABLE_WINDOW_SIZE, componentName, { "page-1-window-size": this.windowResized.bind(this) });
+    this.windowResized(componentName, OBSERVABLE_WINDOW_SIZE, {
+      height: window.innerHeight,
+      width: window.innerWidth,
+    });
 
     this.initialised = true;
   }
   disconnectedCallback() {
-    // Triggered when the component is removed from the DOM.
-    // Ideal place for cleanup code.
-    // Note that when destroying a component, it is good to also release any listeners.
-
+    this.s.unsubscribeFromObservable(OBSERVABLE_WINDOW_SIZE, componentName);
     if (this.i18n && this.t) this.t.unregisterElementsForTranslations(this.i18n, this.textElements);
   }
   adoptedCallback() {
-    // Triggered when the element is adopted through `document.adoptElement()` (like when using an <iframe/>).
-    // Note that adoption does not trigger the constructor again.
+  }
+
+  async windowResized(subscriber: string, watchedPath: string, updatedValue: any) {
+    console.log(`---> windowResized(${subscriber}, ${watchedPath}, ${JSON.stringify(updatedValue)})`);
+    const value = updatedValue as WindowSize;
+
+    const h: HTMLElement | null = this.#shadow.getElementById('window-height');
+    if (h) h.innerText = value.height.toString();
+
+    const w: HTMLElement | null = this.#shadow.getElementById('window-width');
+    if (w) w.innerText = value.width.toString();
   }
 }
 

@@ -12,12 +12,15 @@ import './components/page-2/script';
 import { Logger } from 'library/lib/services/logger';
 import { Navigator } from 'library/lib-fe/services/navigator';
 import { State } from 'library/lib-fe/services/state';
+// util
+import { WindowSizeWatcher } from 'library/lib-fe/util/WindowSize';
 
 const logger: Logger = Logger.getInstance();
 logger.setLevel('debug');
 
-State.getInstance(AppName);
+const state = State.getInstance(AppName);
 Navigator.getInstance(domainRoot, '#app', routes, aliases);
+const wsw: WindowSizeWatcher = WindowSizeWatcher.getInstance(state);
 
 window.customElements.whenDefined('page-1').then(() => {
   const navPage1 = document.getElementById("page-1-link");
