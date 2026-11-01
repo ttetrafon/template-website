@@ -35,9 +35,38 @@ body {
   height: 100dvh;
   background-color: var(--colour-background);
   color: var(--colour-typography);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: 100%;
 
   @media (prefers-color-scheme: dark) {
     background-color: var(--colour-typography);
     color: var(--colour-background);
   }
+}
+
+main,
+nav,
+footer {
+  width: 100%;
+  padding: 8px;
+}
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--colour-action);
+}
+
+footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  border-top: 1px solid var(--colour-action);
+}
+
+a:hover {
+  color: var(--colour-action);
 }

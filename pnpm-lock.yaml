@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       lodash:
-        specifier: ^4.18.1
+        specifier: 4.18.1
         version: 4.18.1
     devDependencies:
       '@types/lodash':

@@ -7,7 +7,7 @@ import pageStyles from '../../styles/style.css?inline';
 import templateHtml from './doc.html?raw';
 import { AppName } from "../../util/constants";
 import { OBSERVABLE_WINDOW_SIZE } from "library/lib-fe/data/constants";
-import { WindowSize } from "library/lib-fe/types";
+import { WindowSize } from "library/lib-fe/types/html";
 
 export type TestObservable = {
   counter: number;

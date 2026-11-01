@@ -1,4 +1,5 @@
-import { Route } from "library/lib-fe/types";
+import { Route } from "library/lib-fe/types/navigation";
+import { AppName } from "../util/constants";
 
 export const routes: Record<string, Route> = {
   'page-one': {
@@ -30,6 +31,17 @@ export const routes: Record<string, Route> = {
     title: "Tab 2",
     description: "This is tab two!",
     pathType: "WebPage"
+  },
+  'mk-editor': {
+    content: "mk-editor",
+    title: "Markdown Editor",
+    description: "This is the Markdown Editor!",
+    pathType: "WebPage",
+    attributes: {
+      'app-name': AppName,
+      'document-id': "0001-test-1000"
+    }
+
   },
   '404': {
     content: "page-404",
