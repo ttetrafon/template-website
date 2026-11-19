@@ -46,5 +46,5 @@ setTimeout(() => {
   document.body.classList.remove('app-loading');
 }, 300);
 
-const testDoc: MkDocument = await requestGet<MkDocument>("./test-document.json");
+const testDoc: MkDocument = await requestGet<MkDocument>("./test-document.json", false);
 if (testDoc) state.createObservable("0001-test-1000", testDoc);
