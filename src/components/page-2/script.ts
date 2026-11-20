@@ -87,7 +87,7 @@ class Component extends HTMLElement {
 
     this.observableHolder = this.#shadow.getElementById("obs-holder") as HTMLParagraphElement;
     this.getObservableValue();
-    this.s.subscribeToObservable("test-obs", "page-2", { "test-obs": this.observableSubscriber.bind(this) });
+    this.s.subscribeToObservable("test-obs", "page-2", { "test-obs": this.observableSubscriber.bind(this) }, { counter: -1 });
 
     // Note that custom elements cannot access custom properties or custom methods of another custom element from `connectedCallback` if the second element appears later in the DOM.
     // This can be overcome by using `window.customElements.whenDefined('element-name').then(() => { ... })`.

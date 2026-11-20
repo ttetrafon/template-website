@@ -102,11 +102,13 @@ class Component extends HTMLElement {
       this.s.updateObservable("test-obs", this.testObservable);
     });
 
-    this.s.subscribeToObservable(OBSERVABLE_WINDOW_SIZE, componentName, { "page-1-window-size": this.windowResized.bind(this) });
-    this.windowResized(componentName, OBSERVABLE_WINDOW_SIZE, {
+    const currentWindowSize: WindowSize = {
       height: window.innerHeight,
-      width: window.innerWidth,
-    });
+      width: window.innerWidth
+    };
+    console.log("currentWindowSize:", currentWindowSize);
+    this.s.subscribeToObservable(OBSERVABLE_WINDOW_SIZE, componentName, { "page-1-window-size": this.windowResized.bind(this) }, currentWindowSize);
+    this.windowResized(componentName, OBSERVABLE_WINDOW_SIZE, currentWindowSize);
 
     this.initialised = true;
   }

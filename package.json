@@ -3,7 +3,7 @@
   "description": "A template for building websites based on ts, web-components, html, and css, and built with Vite.",
   "version": "0.0.0",
   "author": "ttetrafon",
-  "private": true,
+  "private": false,
   "type": "module",
   "engines": {
     "node": ">=24",
@@ -23,9 +23,9 @@
   },
   "scripts": {
     "dev": "pnpm typecheck && vite",
-    "typecheck": "tsc --noEmit && pnpm test",
-    "test": "vitest --run",
-    "test-watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm typecheck && vitest --run",
+    "test-watch": "pnpm typecheck && vitest",
     "build": "vite build",
     "preview": "pnpm run build && vite preview"
   }
