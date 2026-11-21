@@ -21,16 +21,19 @@
     sans-serif;
 }
 
-.app-loading {
-  opacity: 0;
-}
-
-body:not(.app-loading) {
+/* Only the dynamic content is hidden until the app is ready; nav and footer show immediately. */
+#app {
   opacity: 1;
   transition: opacity 0.25s ease-in-out;
 }
 
+.app-loading #app {
+  opacity: 0;
+}
+
 body {
+  /* reveals the body once this stylesheet is applied (see the inline style in index.html) */
+  visibility: visible;
   font-family: var(--font-sans);
   height: 100dvh;
   background-color: var(--colour-background);

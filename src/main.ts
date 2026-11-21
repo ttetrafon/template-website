@@ -1,5 +1,3 @@
-// styles
-import './styles/style.css';
 // data
 import { AppName } from './util/constants';
 import { domainRoot } from './data/config';
