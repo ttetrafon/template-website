@@ -1,6 +1,34 @@
 {
   "id": "0001-test-1000",
   "name": "Test Document",
-  "root": "root",
-  "lines": {}
+  "lines": {
+    "line::0": {
+      "id": "line::0",
+      "contents": "# TITLE",
+      "next": "line::1"
+    },
+    "line::1": {
+      "id": "line::1",
+      "contents": "Line 1...",
+      "previous": "line::0",
+      "next": "line::2"
+    },
+    "line::2": {
+      "id": "line::2",
+      "contents": "Line 2...",
+      "previous": "line::1",
+      "next": "line::3"
+    },
+    "line::3": {
+      "id": "line::3",
+      "contents": "Line 3...",
+      "previous": "line::2",
+      "next": "line::4"
+    },
+    "line::4": {
+      "id": "line::4",
+      "contents": "Line 4...",
+      "previous": "line::3"
+    }
+  }
 }
